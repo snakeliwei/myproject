@@ -3,6 +3,7 @@
 # author: Lyndon
 
 import sys
+import uuid
 from qiniu import Auth, put_file, etag,
 import qiniu.config
 
@@ -10,6 +11,15 @@ import qiniu.config
 # 这段代码是用于解决中文报错的问题
 reload(sys)
 sys.setdefaultencoding("utf8")
+
+
+class uplaoder(object):
+    """七牛上传"""
+
+    def __init__(self):
+        self.key = ''
+        self.token = ''
+        self.file = ''
 
 key = 'my-python-logo.png'
 

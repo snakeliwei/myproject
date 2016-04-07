@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # file: pgconn.py
-# author__ = 'lyndon'
+# author: Lyndon
 
 import psycopg2
 import uuid

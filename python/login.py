@@ -19,7 +19,9 @@ class Login(object):
 
     def __init__(self):
         self.name = ''
-        self.passwprd = ''
+        self.pwd = ''
+        self.token = ''
+        self.spaceId = ''
 
         self.cj = cookielib.LWPCookieJar()
         self.opener = urllib2.build_opener(
@@ -42,6 +44,11 @@ class Login(object):
         thePage = response.read()
         token = str(json.loads(thePage)['authentication_token'])
         return token
+
+    def getSpace(self, token):
+        '''获取上传token'''
+        url = 'http://api.yunlu6.com//api/v1/spaces?token=' + self.token
+
 
 if __name__ == '__main__':
     userlogin = Login()

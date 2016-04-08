@@ -63,3 +63,4 @@ target/
 
 #excel data file
 *.xls
+AutoBuildDocFromDB/

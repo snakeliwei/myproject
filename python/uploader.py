@@ -13,17 +13,15 @@ reload(sys)
 sys.setdefaultencoding("utf8")
 
 
-class uplaoder(object):
-    """七牛上传"""
+class Uploader(object):
 
     def __init__(self):
-        self.key = ''
+        self.key = str(uuid.uuid1()) + '.png'
         self.token = ''
         self.file = ''
 
-key = 'my-python-logo.png'
-
-localfile = './sync/bbb.jpg'
-
-ret, info = put_file(token, key, localfile)
-print(info)
+    def fileUpload(self, localfile, token):
+        self.file = localfile
+        self.token = token
+        ret, info = put_file(self.token, self.key, self.file)
+        print(info)

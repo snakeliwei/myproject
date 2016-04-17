@@ -6,13 +6,13 @@ import sys
 import urllib2
 import cookielib
 import json
+import uuid
+from qiniu import Auth, put_file, etag
+import qiniu.config
 
 # 这段代码是用于解决中文报错的问题
 reload(sys)
 sys.setdefaultencoding("utf8")
-
-# 登录giant
-
 
 
 class Login(object):
@@ -21,7 +21,6 @@ class Login(object):
         self.name = ''
         self.pwd = ''
         self.token = ''
-        self.spaceId = ''
         self.baseUrl = ''
 
         self.cj = cookielib.LWPCookieJar()
@@ -54,6 +53,28 @@ class Login(object):
         req = urllib2.urlopen(getUrl)
         s = req.read()
         return s
+
+    def createCoSpace(self, coData):
+        '''创建企业空间'''
+        createUrl = self.baseUrl + '/api/v1/spaces/organization'
+        createParams = coData
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13E234 Html5Plus/1.0'}
+        req = urllib2.Request(createUrl, createParams, headers)
+        response = urllib2.urlopen(req)
+        self.operate = self.opener.open(req)
+        thePage = response.read()
+        print thePage
+
+    def upLoader(self, filePath, spaceId):
+        '''上传图片'''
+        upLoaderUrl = self.baseUrl + '/api/v1/spaces/'
+        req = urllib2.urlopen(upLoaderUrl)
+        data = req.read()
+        upLoaderToken = str(json.loads(data)['authentication_token'])
+        key = str(uuid.uuid1()) + '.png'
+        ret, info = put_file(upLoaderToken, key, filePath)
+        print(info)
 
 
 if __name__ == '__main__':

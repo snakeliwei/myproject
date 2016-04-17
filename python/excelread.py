@@ -40,9 +40,14 @@ def excel_table_byname(file='data.xls', colnameindex=1, by_name=u'Sheet1'):
 
 def main():
     tables = excel_table_byname()
-    for row in tables:
-        data = json.loads(json.dumps(row, ensure_ascii=False))['mobile']
-        print data
+    # for row in tables:
+    #     data = json.loads(json.dumps(row, ensure_ascii=False))['mobile']
+    #     print data
+    print type(tables)
+    print tables
+    # data = json.loads(json.dumps(tables, encoding="utf-8"))
+    # print type(data)
+    # print data
 
 if __name__ == "__main__":
     main()

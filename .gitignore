@@ -64,3 +64,6 @@ target/
 #excel data file
 *.xls
 AutoBuildDocFromDB/
+golang/bin/
+golang/pkg/
+golang/src/

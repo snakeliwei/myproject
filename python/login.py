@@ -79,13 +79,14 @@ class Login(object):
 
 if __name__ == '__main__':
     userlogin = Login()
-    url = 'http://yunlu.iok.la:81'
+    url = 'http://api.yunlu6.com'
     username = '13036134958'
-    password = '87894248'
+    password = '88888888'
     userlogin.setLoginInfo(url, username, password)
     token = userlogin.login()
     print token
     print type(token)
     space = userlogin.getSpaceList()
-    print space
-    print type(space)
+    data = json.loads(space)
+    print data
+    print type(data)

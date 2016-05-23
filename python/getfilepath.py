@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # file: getfilepath.py
 # author: Lyndon
@@ -27,6 +26,7 @@ class getPath(object):
         return self.filelist
 
 if __name__ == '__main__':
-    path = getPath('D:\data\公司图片')
-    filelist = path.getFileList()
-    print filelist
+    # path = getPath('D:\data\公司图片')
+    # filelist = path.getFileList()
+    # print filelist
+    pass

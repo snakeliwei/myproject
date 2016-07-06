@@ -7,6 +7,10 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+.vagrant/
+.DS_Store
+node_modules/
+*.log
 .Python
 env/
 build/

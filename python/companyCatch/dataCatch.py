@@ -5,6 +5,7 @@
 import time
 import sys
 import json
+import uuid
 from httpsRequest import dataPost
 from dbSave import datasave
 
@@ -26,14 +27,15 @@ if __name__ == '__main__':
     dataRead = dataPost()
     url = 'https://120.52.121.75:8443'
     dataRead.setSiteInfo(url)
-    zoneRec = dataRead.dataQuerySite()
-    for zone in zoneRec.keys():
-        for keyword in keywords:
-            names = dataRead.dataQueryAutoname(zone, keyword)
+    for keyword in keywords:
+        imei = str(uuid.uuid1()).upper()
+        zoneRec = dataRead.dataQuerySite(imei)
+        for zone in zoneRec.keys():
+            names = dataRead.dataQueryAutoname(zone, keyword, imei)
             print json.dumps(names, ensure_ascii=False)
             if (names):
                 for name in names:
-                    record = dataRead.dataQuerySummary(zone, name)
+                    record = dataRead.dataQuerySummary(zone, name, imei)
                     if (record):
                         print json.dumps(record['RESULT'], ensure_ascii=False)
                         company = record['RESULT']

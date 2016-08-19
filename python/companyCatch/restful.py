@@ -10,6 +10,7 @@ app = Flask(__name__)
 datasaver = datasave()
 companys = datasaver.dataRead()
 
+
 @app.route('/v1.0/companys/<string:company_id>', methods=['GET'])
 def get_company(company_id):
     company = filter(lambda t: t['ID'] == company_id, companys)

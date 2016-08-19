@@ -71,3 +71,4 @@ AutoBuildDocFromDB/
 golang/bin/
 golang/pkg/
 golang/src/
+hosts

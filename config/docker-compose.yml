@@ -1,0 +1,53 @@
+web:
+  build: nginx
+  links: 
+    - golem
+    - giant
+  volumes:
+      - ./nginx/nginxconf:/etc/nginx/sites-enabled
+  ports:
+    - "80:80"
+  restart: always
+  mem_limit: 500000000
+golem:
+  build: golem
+  volumes:
+    - ./golem:/app
+  links:
+    - db
+    - redis
+  restart: always
+  mem_limit: 2000000000
+  environment:
+    - LANG=C.UTF-8
+giant:
+  build: giant
+  volumes:
+    - ./giant:/app
+  links: 
+    - db
+    - redis
+  external_links:
+    - elasticsearch_estest_1:es
+  restart: always
+  mem_limit: 2000000000
+  environment:
+    - LANG=C.UTF-8
+db:
+  image: snakeliwei/alpine-postgresql:9.5
+  ports:
+    - "5432:5432"
+  restart: always
+  mem_limit: 1000000000
+  volumes:
+    - ./db/data:/var/lib/postgresql/data
+  environment:
+    - POSTGRES_USER=bestone
+    - POSTGRES_PASSWORD=test
+redis:
+  image: microbox/redis:2.8.19 
+  ports: 
+    - "16379:6379"
+  restart: always
+  mem_limit: 1000000000
+

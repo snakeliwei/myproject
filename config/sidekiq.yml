@@ -1,0 +1,13 @@
+:verbose: false
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:queues:
+  - [default, 1]
+  - [auth_score, 5]
+staging:
+  :concurrency: 5
+development:
+  :concurrency: 5
+production:
+  :concurrency: 50
+                      

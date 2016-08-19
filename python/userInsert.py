@@ -11,7 +11,7 @@ class userInsert(object):
 
     def __init__(self):
         """initial connect data"""
-        self.conn = psycopg2.connect(database="giant_product", user="bestone",
+        self.conn = psycopg2.connect(database="giant_test", user="bestone",
                                      password="q4V*t5YWwRtq92G&^nRDQE34",
                                      host="127.0.0.1",
                                      port="5432")

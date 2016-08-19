@@ -87,7 +87,6 @@ if __name__ == '__main__':
     dataRead = dataPost()
     url = 'https://120.52.121.75:8443'
     dataRead.setSiteInfo(url)
-    imei = str(uuid.uuid1()).upper()
+    imei = 'B0494235-B0DB-407C-8B67-6EEF6C49343'
     zoneRec = dataRead.dataQuerySite(imei)
     print zoneRec
-

@@ -5,17 +5,27 @@
 import requests
 import json
 import sys
+import yaml
 
 
 class weChatMs(object):
 
     def __init__(self):
-        pqyload = {
-            'corpid': 'wx906d385179a4f813',
-            'corpsecret': 'pKT_A3rm-RTaKOJId5p2BzpT5MqaqHm0yuCv8oDv-R0o6vmYXXLhNKejT4YMejDV'}
+
+        try:
+            data = open('config.yml')
+        except Exception, e:
+            print str(e)
+
+        pqyload = yaml.load(data)['wechat']
+        data.close()
+
         res = requests.get(
             'https://qyapi.weixin.qq.com/cgi-bin/gettoken', params=pqyload)
-        self.token = res.json()['access_token']
+        if ('access_token' in res.json()):
+            self.token = res.json()['access_token']
+        else:
+            print res.json()
 
     def sendMessage(self, content):
         '''发送消息接口'''

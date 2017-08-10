@@ -1,6 +1,7 @@
 #!/bin/bash
 # dependence: jq & curl
 # Author: Lyndon
+# Usage: Replace with your dnspod info and install jq & curl then execute it.
 
 TOKEN_ID="YOUR DNSPOD TOKEN ID"
 TOKEN="YOUR DNSPOD TOKEN"

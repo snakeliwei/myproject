@@ -1,0 +1,5 @@
+{
+  "storage-driver": "overlay",
+  "registry-mirrors": ["https://knb1nxmo.mirror.aliyuncs.com"],
+  "live-restore": true
+}

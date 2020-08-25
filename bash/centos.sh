@@ -16,3 +16,6 @@ bash -c 'echo "net.ipv4.tcp_congestion_control=bbr" >> /usr/lib/sysctl.d/50-defa
 # modify grub menu
 grub2-set-default 0
 grub2-mkconfig -o /boot/grub2/grub.cfg
+
+# check the kernel list
+rpm -qa | grep kernel
